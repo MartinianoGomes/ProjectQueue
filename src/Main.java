@@ -26,7 +26,7 @@ public class Main {
         }
 
         System.out.println("\n" + "Size of stack = " + stack.size());
-        System.out.println("Peek = " + stack.peek());
-
+        System.out.println("Peak = " + stack.peak());
+        System.out.println("Base = " + stack.base());
     }
 }

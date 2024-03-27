@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
     private Node first;
+    private Node last;
     private int n;
 
     private class LinkedIterator implements Iterator<Item> {
@@ -35,21 +36,33 @@ public class Stack<Item> implements Iterable<Item> {
         private Node next;
     }
 
-    public Item peek(){
+    public Item peak(){
         if (isEmpty())
             throw new NoSuchElementException("Empty stack");
 
         return first.item;
     }
 
+    public Item base(){
+        if (isEmpty())
+            throw new NoSuchElementException("Empty stack");
+
+        return last.item;
+    }
+
     public Item pop() {
         Item item = null;
+
         if (isEmpty())
             throw new NoSuchElementException();
         else {
             item = first.item;
             first = first.next;
             n--;
+
+            if (first == null) {
+                last = null;
+            }
         }
 
         return item;
@@ -58,8 +71,16 @@ public class Stack<Item> implements Iterable<Item> {
     public void push(Item item) {
         Node newNode = new Node();
         newNode.item = item;
-        newNode.next = first;
-        first = newNode;
+        newNode.next = null;
+
+        if (isEmpty()) {
+            first = newNode;
+            last = newNode;
+        } else {
+            last.next = newNode;
+            last = newNode;
+        }
+
         n++;
     }
 
@@ -73,6 +94,7 @@ public class Stack<Item> implements Iterable<Item> {
 
     public Stack() {
         first = null;
+        last = null;
         n = 0;
     }
 
