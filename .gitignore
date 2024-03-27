@@ -1,6 +1,4 @@
 # Default ignored files
-/shelf/
-/.idea
-/out
-/ProjectStack.iml
-/vcs.xml
+.idea/
+out/
+ProjectStack.iml
