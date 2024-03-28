@@ -3,7 +3,7 @@ package entities;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Stack<Item> implements Iterable<Item> {
+public class Queue<Item> implements Iterable<Item> {
     private Node first;
     private Node last;
     private int n;
@@ -38,14 +38,14 @@ public class Stack<Item> implements Iterable<Item> {
 
     public Item peak(){
         if (isEmpty())
-            throw new NoSuchElementException("Empty stack");
+            throw new NoSuchElementException("Empty queue");
 
         return first.item;
     }
 
     public Item base(){
         if (isEmpty())
-            throw new NoSuchElementException("Empty stack");
+            throw new NoSuchElementException("Empty queue");
 
         return last.item;
     }
@@ -92,7 +92,7 @@ public class Stack<Item> implements Iterable<Item> {
         return first == null;
     }
 
-    public Stack() {
+    public Queue() {
         first = null;
         last = null;
         n = 0;
